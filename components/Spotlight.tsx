@@ -2,10 +2,7 @@
 import { motion, useMotionValue, useMotionTemplate } from "framer-motion";
 import { useCallback } from "react";
 
-/**
- * Full‑page mouse‑reactive spotlight using Framer Motion (no useMouse).
- * Adds a soft radial glow that follows the cursor.
- */
+/** Mouse‑follow page spotlight (build‑safe, no useMouse) */
 export default function Spotlight() {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -16,7 +13,6 @@ export default function Spotlight() {
     y.set(e.clientY - rect.top);
   }, [x, y]);
 
-  // Violet brand glow, very subtle
   const spotlight = useMotionTemplate`
     radial-gradient(
       400px circle at ${x}px ${y}px,
