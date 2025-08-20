@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Space_Grotesk } from "next/font/google"; // <--- import font
 import ScrollProgressBar from "../components/ScrollProgressBar";
-import Spotlight from "../components/Spotlight";
+// import Spotlight from "../components/Spotlight";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { profile } from "../lib/data";
@@ -24,7 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`dark ${spaceGrotesk.variable}`}>
       <body className="font-sans">
         <ScrollProgressBar />
-        <Spotlight />
+        {/* <Spotlight /> */}
         <Header />
         <main className="container py-10 relative z-10">{children}</main>
         <Footer />

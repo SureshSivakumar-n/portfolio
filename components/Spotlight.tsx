@@ -1,23 +1,36 @@
 "use client";
-import { motion, useMouse } from "framer-motion";
-import { useRef } from "react";
+import { motion, useMotionValue, useMotionTemplate } from "framer-motion";
+import { useCallback } from "react";
 
-export default function Spotlight(){
-  const ref = useRef<HTMLDivElement>(null);
-  // useMouse is tiny util in framer-motion@11; fallback if not present
-  const handle = (e: React.MouseEvent<HTMLDivElement>) => {
-    const el = ref.current; if(!el) return;
-    const r = el.getBoundingClientRect();
-    const x = e.clientX - r.left, y = e.clientY - r.top;
-    el.style.setProperty("--mx", `${x}px`);
-    el.style.setProperty("--my", `${y}px`);
-  };
+/**
+ * Full‑page mouse‑reactive spotlight using Framer Motion (no useMouse).
+ * Adds a soft radial glow that follows the cursor.
+ */
+export default function Spotlight() {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    x.set(e.clientX - rect.left);
+    y.set(e.clientY - rect.top);
+  }, [x, y]);
+
+  // Violet brand glow, very subtle
+  const spotlight = useMotionTemplate`
+    radial-gradient(
+      400px circle at ${x}px ${y}px,
+      rgba(102,71,255,0.12),
+      transparent 60%
+    )
+  `;
+
   return (
-    <div ref={ref} onMouseMove={handle}
-      className="pointer-events-none fixed inset-0 z-0"
-      style={{
-        background: `radial-gradient(600px at var(--mx,50%) var(--my,50%), rgba(124,92,255,.14), transparent 60%)`
-      }}
+    <motion.div
+      onMouseMove={handleMouseMove}
+      style={{ backgroundImage: spotlight }}
+      className="pointer-events-none fixed inset-0 -z-10"
+      aria-hidden
     />
   );
 }
