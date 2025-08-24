@@ -45,22 +45,25 @@ export default function HomePage() {
               </motion.p>
 
               <motion.div
-                initial={{ opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.6 }}
-                className="mt-8 flex flex-wrap gap-6"
-              >
-                <MagneticButton href={profile.linkedin}>LinkedIn</MagneticButton>
-                <MagneticButton
-                  href={profile.github}
-                  className="bg-zinc-800 hover:bg-zinc-700"
-                >
-                  GitHub
-                </MagneticButton>
-                <a href="/projects" className="underline-fx text-lg">
-                  See Projects →
-                </a>
-              </motion.div>
+  initial={{ opacity: 0, y: 24 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 0.3, duration: 0.6 }}
+  className="mt-8 flex flex-wrap items-center gap-6"
+>
+  <MagneticButton href={profile.linkedin}>LinkedIn</MagneticButton>
+
+  <MagneticButton href={profile.github} className="bg-zinc-800">
+    GitHub
+  </MagneticButton>
+
+  {/* keep as a text link, but vertically center it */}
+  <a
+    href="/projects"
+    className="underline-fx text-lg leading-none self-center"
+  >
+    See Projects →
+  </a>
+</motion.div>
             </div>
           </div>
 
@@ -113,6 +116,20 @@ export default function HomePage() {
                   </a>
                 </motion.li>
               </motion.ul>
+              <motion.div
+      variants={{ hidden: { opacity: 0, y: 18 }, show: { opacity: 1, y: 0 } }}
+      className="mt-6"
+    >
+      <a
+        href="/api/resume"
+        className="inline-block px-6 py-3 rounded-xl 
+               bg-[#6647ff] text-white font-semibold
+               transform transition-transform duration-300
+               hover:scale-105 hover:text-white"
+      >
+        Download Résumé
+      </a>
+    </motion.div>
             </motion.div>
           </motion.div>
         </section>

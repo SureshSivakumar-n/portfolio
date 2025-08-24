@@ -1,24 +1,31 @@
 "use client";
 import { useRef } from "react";
+"use client";
+import { motion } from "framer-motion";
+import clsx from "clsx";
 
-export default function MagneticButton({ children, href, className="" }:{
-  children: React.ReactNode; href?: string; className?: string;
-}){
-  const ref = useRef<HTMLAnchorElement>(null);
-  const move = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    const el = ref.current; if(!el) return;
-    const r = el.getBoundingClientRect();
-    const dx = (e.clientX - (r.left + r.width/2)) * 0.1;
-    const dy = (e.clientY - (r.top + r.height/2)) * 0.1;
-    el.style.transform = `translate(${dx}px, ${dy}px)`;
-  };
-  const leave = () => { if(ref.current) ref.current.style.transform = `translate(0,0)`; };
-  const Comp:any = href ? "a" : "button";
+export default function MagneticButton({
+  href,
+  children,
+  className = "",
+}: {
+  href: string;
+  children: React.ReactNode;
+  className?: string;
+}) {
   return (
-    <Comp ref={ref} href={href} onMouseMove={move} onMouseLeave={leave}
-      className={`px-5 py-2 rounded-xl bg-brand-500 hover:bg-brand-600 text-white shadow-soft transition-transform will-change-transform ${className}`}
+    <motion.a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      whileHover={{ scale: 1.05 }} // 👈 smooth scale forward
+      transition={{ duration: 0.3, delay: 0.2 }}
+      className={clsx(
+        "inline-block px-6 py-3 rounded-xl bg-[#6647ff] text-white font-semibold transition-transform duration-300 hover:scale-105 hover:text-white",
+        className
+      )}
     >
       {children}
-    </Comp>
+    </motion.a>
   );
 }

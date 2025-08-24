@@ -9,6 +9,7 @@ export default function Header() {
           <Link className="underline-fx" href="/projects">Projects</Link>
           {/* <Link className="underline-fx" href="/blog">Blog</Link> */}
           <Link className="underline-fx" href="/contact">Contact</Link>
+          
         </div>
       </nav>
     </header>
