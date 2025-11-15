@@ -2,7 +2,7 @@ export const profile = {
   name: "Suresh Sivakumar",
   role: "Data Engineer",
   blurb:
-    "Motivated and detail-oriented postgraduate student with 3 years of experience in data engineering, analytics, and backend system development. Certified in Google Cloud Platform (GCP), with expertise in SQL, cloud technologies, Databricks, and ETL pipelines. Adept in cross-functional collaboration, data governance, and dashboard visualization to support data-driven decision-making.",
+    "Motivated and detail-oriented postgraduate student with 4 years of experience in data engineering, analytics, and backend system development. Certified in Google Cloud Platform (GCP), with expertise in SQL, cloud technologies, Databricks, and ETL pipelines. Adept in cross-functional collaboration, data governance, and dashboard visualization to support data-driven decision-making.",
   location: "Apartment 7, Block 2, Cois Abhainn, Kildare, Ireland",
   email: "sureshsivakumar.n@gmail.com",
   phone:"+353 0894315976",
@@ -98,7 +98,7 @@ export const experience = [
   },
   {
     company: "AVP Consulting (Chennai, India)",
-    title: "Junior Developer Intern",
+    title: "Junior Developer (Data)",
     period: "2020 — 2021",
     image: "/avp.png", // <--- add this
     bullets: [
