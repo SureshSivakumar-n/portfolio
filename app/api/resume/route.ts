@@ -3,7 +3,7 @@ import path from "path";
 
 export async function GET() {
   try {
-    const filePath = path.join(process.cwd(), "public", "resume", "Suresh_resume.pdf");
+    const filePath = path.join(process.cwd(), "public", "resume", "Suresh_Sivakumar_Resume.pdf");
 
     // Read the file from disk (Node runtime)
     const file = await fs.promises.readFile(filePath);
@@ -14,7 +14,7 @@ export async function GET() {
       headers: {
         "Content-Type": "application/pdf",
         // 👇 Forces download with this filename
-        "Content-Disposition": 'attachment; filename="Suresh_resume.pdf"',
+        "Content-Disposition": 'attachment; filename="Suresh_Sivakumar_Resume.pdf"',
         "Content-Length": stat.size.toString(),
         // Optional caching (1 hour)
         "Cache-Control": "public, max-age=3600, immutable",
